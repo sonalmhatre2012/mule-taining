@@ -1,18 +1,17 @@
-# Exercise 1: Create an API specification with RAML
+# Exercise 3: Deploy and secure an API
 ## Objectives
-In this exercise, you create an API specification using RAML. You will:
-•       Appropriately specify GET and POST methods.
-•       Appropriately define URI parameters, query parameters, and headers.
-•       Restrict possible values using an enumeration.
-## Scenario
-Your company needs to expose a customer accounts database as a System API for the rest of the organization. The first step is to create the RAML specification and post it to your company’s private Anypoint Exchange so all stakeholders can review and provide feedback. This RAML specification needs to separate out data type definitions from the main API RAML file into separate reusable RAML files.
+In this exercise, you deploy and secure an API implementation. You will:
+•       Deploy a Mule API application to CloudHub.
+•       Create simple test flows to automatically set sample required headers and parameters before calling an API endpoint. 
+•       Create an API proxy for a Mule application and apply an SLA based rate limiting policy.
 
-# Exercise 2: Implement a REST API using APIkit
-Objectives
-In this exercise, you implement a REST API that has a RAML specification. You will:
-•       Use APIkit to create implementation flows.
-•       Add logic to APIkit auto-generated flows.
-•       Enhance an API and regenerate the flows using APIkit.
+# Exercise 4: Use an API implementation as its own proxy
+## Objectives
+In this exercise, you configure a Mule application that has already deployed to CloudHub to manage its own API proxies. You will:
+•       Configure a Mule application to enable autodiscovery for API Manager.
+•       Redeploy the Mule application to CloudHub.
+•       Test that the implementation URL is now enforcing API policies set in API Manager.
+
 
 
 
