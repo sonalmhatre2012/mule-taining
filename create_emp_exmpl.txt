@@ -1,0 +1,6 @@
+{
+"id":"123",
+"name":"Minal",
+"email":"min@gmail.com",
+"designation":"developer"
+}

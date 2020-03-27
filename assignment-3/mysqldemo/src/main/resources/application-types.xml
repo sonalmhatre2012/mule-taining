@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="createemp" format="json">
+      <types:shape format="weave" example="examples/create_emp_exmpl.json"><![CDATA[%dw 2.0
+
+type createemp = {|
+  id: String, 
+  name: String, 
+  email: String, 
+  designation: String
+|} {"example": "{\\\"id\\\":\\\"123\\\",\\\"name\\\":\\\"Minal\\\",\\\"email\\\":\\\"min@gmail.com\\\",\\\"designation\\\":\\\"developer\\\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#5d20bbbc-9c09-49a0-9de4-a758cdf8c529">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="createemp"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#01aa6bf3-06e8-4867-ab34-65c9af0ff325">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="createemp"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
