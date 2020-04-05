@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b736e24a-50e0-4046-b179-f2babb1a662c" basePath="/sample" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="c3931930-ac02-42b2-8398-e83543776dc1">
+		<http:request-connection host="localhost" port="8081" />
+	</http:request-config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="ac83b0bf-80ef-4f8f-98f0-6ba73fce3bcc" >
+		<db:my-sql-connection host="localhost" port="3306" user="mule" password="mule" database="training" />
+	</db:config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="b47a80d1-be83-4f6d-9920-64c0d7b764b9" basePath="/v1" >
+		<http:listener-connection host="localhost" port="8082" />
+	</http:listener-config>
+	<flow name="invokeserviceFlow" doc:id="2101f846-524d-4509-9592-146fd28aa8b6" >
+		<http:listener doc:name="Listener" doc:id="20976e9b-4ed3-4395-b3e0-b8dbe96c3fac" config-ref="HTTP_Listener_config" path="/rest"/>
+		<flow-ref doc:name="Flow Reference" doc:id="36311a88-99fe-4b90-984d-2b499ee8cd8d" name="GetAllEmployees"/>
+	</flow>
+	<flow name="invokeserviceFlow1" doc:id="d9326589-07ca-4e7b-a95d-ac086e3afae5" >
+		<http:listener doc:name="Listener" doc:id="faabdcab-6dce-497e-9d03-2969fa14dc8e" config-ref="HTTP_Listener_config" path="/employees"/>
+		<set-payload value='#[output application/json
+---
+{"success": "true"}]' doc:name="Set Payload" doc:id="fb88703d-9324-4f7c-aaa9-6ba24db22fd2" />
+	</flow>
+	<flow name="GetAllEmployees" doc:id="246ef752-9684-49f1-8b70-c71d31688799" >
+		<http:request method="GET" doc:name="Request" doc:id="8ad3d88d-bce6-46a0-b745-17da34c1efb5" config-ref="HTTP_Request_configuration" path="/sample/employees"/>
+	</flow>
+	
+</mule>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="COUNTRYpAYLOAD" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#080eece6-7863-4f13-9cf9-2fa9d59edce9">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:attributes type="COUNTRYpAYLOAD"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#dd27f52b-a46f-4df8-b4f3-ab4d8fe2fab2">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="COUNTRYpAYLOAD"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
