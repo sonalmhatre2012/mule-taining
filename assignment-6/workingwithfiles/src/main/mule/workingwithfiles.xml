@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="8d4767fd-46c2-4f88-8c02-23539fb5532e" >
+		<file:connection workingDir="C:\Users\sonmhatr\AnypointStudio\studio-workspace" />
+	</file:config>
+	<flow name="workingwithfilesFlow" doc:id="20c84fd8-285b-450f-bdd8-04a8a7815dcd" >
+		<file:listener doc:name="On New or Updated File" doc:id="77028d68-61b6-4a33-8b50-f0e3e8a1e44d" config-ref="File_Config" directory="resources" recursive="false">
+			<scheduling-strategy >
+				<cron />
+			</scheduling-strategy>
+		</file:listener>
+	</flow>
+</mule>
